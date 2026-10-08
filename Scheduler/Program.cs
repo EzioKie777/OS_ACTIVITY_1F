@@ -30,6 +30,22 @@ int t = 0;
 foreach (var p in procs.OrderBy(x => x.Arrival).ThenBy(x => x.Pid))
 {
 // TODO 1: if the CPU is idle until p arrives, add 0 to gantt and advance t
+// TODO 1: Handle idle CPU before process arrives
+    while (t < p.Arrival)
+    {
+        gantt.Add(0); // 0 represents CPU idle
+        t++;
+    }
+    // TODO 2: set p.Start, add p.Burst copies of p.Pid to gantt, and update CT/t
+    p.Start = t;
+    p.Completion = t + p.Burst;
+
+    for (int i = 0; i < p.Burst; i++)
+    {
+        gantt.Add(p.Pid);
+    }
+
+    t = p.Completion; // advance the CPU clock to when this process finishes
 // TODO 2: set p.Start, add p.Burst copies of p.Pid to gantt,
 // advance t, then set p.Completion
 }
