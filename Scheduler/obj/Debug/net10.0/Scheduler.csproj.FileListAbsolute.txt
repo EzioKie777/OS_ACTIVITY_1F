@@ -1,0 +1,5 @@
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.AssemblyInfoInputs.cache
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.AssemblyInfo.cs
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.csproj.CoreCompileInputs.cache
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.sourcelink.json
