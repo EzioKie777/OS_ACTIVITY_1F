@@ -8,13 +8,13 @@ class Proc
 public int Pid, Arrival, Burst;
 public int Start = -1; // first CPU time (-1 = none yet)
 public int Completion;
-public int Tat =&gt; Completion - Arrival; // turnaround time
-public int Wt =&gt; Tat - Burst; // waiting time
-public int Rt =&gt; Start - Arrival; // response time
+public int Tat => Completion - Arrival; // turnaround time
+public int Wt => Tat - Burst; // waiting time
+public int Rt => Start - Arrival; // response time
 }
 class Program
 {
-static List&lt;Proc&gt; MakeWorkload() =&gt; new List&lt;Proc&gt;
+static List<Proc> MakeWorkload() => new List<Proc>
 {
 new Proc { Pid = 1, Arrival = 0, Burst = 7 },
 new Proc { Pid = 2, Arrival = 2, Burst = 4 },
@@ -23,11 +23,11 @@ new Proc { Pid = 4, Arrival = 5, Burst = 4 },
 };
 // Every algorithm returns a Gantt list: one entry per time unit,
 // holding the pid that ran in that unit (0 = CPU idle).
-static List&lt;int&gt; Fcfs(List&lt;Proc&gt; procs)
+static List<int> Fcfs(List<Proc> procs)
 {
-var gantt = new List&lt;int&gt;();
+var gantt = new List<int>();
 int t = 0;
-foreach (var p in procs.OrderBy(x =&gt; x.Arrival).ThenBy(x =&gt; x.Pid))
+foreach (var p in procs.OrderBy(x => x.Arrival).ThenBy(x => x.Pid))
 {
 // TODO 1: if the CPU is idle until p arrives, add 0 to gantt and advance t
 // TODO 2: set p.Start, add p.Burst copies of p.Pid to gantt,
@@ -35,56 +35,54 @@ foreach (var p in procs.OrderBy(x =&gt; x.Arrival).ThenBy(x =&gt; x.Pid))
 }
 return gantt;
 }
-static List&lt;int&gt; Sjf(List&lt;Proc&gt; procs) // nonpreemptive
+static List<int> Sjf(List<Proc> procs) // nonpreemptive
 {
-var gantt = new List&lt;int&gt;();
-var remaining = new List&lt;Proc&gt;(procs);
+var gantt = new List<int>();
+var remaining = new List<Proc>(procs);
 int t = 0;
-while (remaining.Count &gt; 0)
+while (remaining.Count > 0)
 {
-// TODO 3: among processes with Arrival &lt;= t, pick the smallest Burst
+// TODO 3: among processes with Arrival <= t, pick the smallest Burst
 // (ties: earlier Arrival, then smaller Pid).
 // If none has arrived, add 0 (idle) to gantt, t++ and continue.
 // TODO 4: run it to completion: set Start and Completion, fill gantt,
-// advance t, and remove it from &#39;remaining&#39;
+// advance t, and remove it from 'remaining'
 }
 return gantt;
 }
-static List&lt;int&gt; RoundRobin(List&lt;Proc&gt; procs, int q)
+static List<int> RoundRobin(List<Proc> procs, int q)
 {
-var gantt = new List&lt;int&gt;();
-var left = procs.ToDictionary(p =&gt; p.Pid, p =&gt; p.Burst); // remaining time
-var queue = new Queue&lt;Proc&gt;();
-var pending = procs.OrderBy(p =&gt; p.Arrival).ThenBy(p =&gt; p.Pid).ToList();
+var gantt = new List<int>();
+var left = procs.ToDictionary(p => p.Pid, p => p.Burst); // remaining time
+var queue = new Queue<Proc>();
+var pending = procs.OrderBy(p => p.Arrival).ThenBy(p => p.Pid).ToList();
 int t = 0, next = 0, finished = 0;
-while (finished &lt; procs.Count)
+while (finished < procs.Count)
 {
 // TODO 5 (see the steps in Task 3)
 }
 return gantt;
 }
-static void PrintReport(string name, List&lt;Proc&gt; procs, List&lt;int&gt; gantt)
+static void PrintReport(string name, List<Proc> procs, List<int> gantt)
 {
-Console.WriteLine($&quot;=== {name} ===&quot;);
-var sb = new StringBuilder(&quot;Gantt: &quot;);
+Console.WriteLine($"=== {name} ===");
+var sb = new StringBuilder("Gantt: ");
 int start = 0;
-for (int i = 1; i &lt;= gantt.Count; i++)
+for (int i = 1; i <= gantt.Count; i++)
 {
 if (i == gantt.Count || gantt[i] != gantt[start])
 {
-string label = gantt[start] == 0 ? &quot;idle&quot; : $&quot;P{gantt[start]}&quot;;
-sb.Append($&quot;|{label} {start}-{i} &quot;);
+string label = gantt[start] == 0 ? "idle" : $"P{gantt[start]}";
+sb.Append($"|{label} {start}-{i} ");
 start = i;
 }
 }
-sb.Append(&#39;|&#39;);
+sb.Append('|');
 Console.WriteLine(sb);
-Console.WriteLine(&quot;PID AT BT CT TAT WT RT&quot;);
-foreach (var p in procs.OrderBy(x =&gt; x.Pid))
-Console.WriteLine($&quot;{p.Pid,3} {p.Arrival,3} {p.Burst,3} {p.Completion,3}
-{p.Tat,4} {p.Wt,3} {p.Rt,3}&quot;);
-Console.WriteLine($&quot;Avg WT = {procs.Average(p =&gt; p.Wt):F2} Avg TAT =
-{procs.Average(p =&gt; p.Tat):F2} Avg RT = {procs.Average(p =&gt; p.Rt):F2}&quot;);
+Console.WriteLine("PID AT BT CT TAT WT RT");
+foreach (var p in procs.OrderBy(x => x.Pid))
+Console.WriteLine($"{p.Pid,3} {p.Arrival,3} {p.Burst,3} {p.Completion,3} {p.Tat,4} {p.Wt,3} {p.Rt,3}");
+Console.WriteLine($"Avg WT = {procs.Average(p => p.Wt):F2} Avg TAT = {procs.Average(p => p.Tat):F2} Avg RT = {procs.Average(p => p.Rt):F2}");
 Console.WriteLine();
 }
 static void PartB()
@@ -97,9 +95,9 @@ double[] period = { 50, 80 };
 }
 static void Main()
 {
-var w = MakeWorkload(); PrintReport(&quot;FCFS&quot;, w, Fcfs(w));
-w = MakeWorkload(); PrintReport(&quot;SJF&quot;, w, Sjf(w));
-w = MakeWorkload(); PrintReport(&quot;Round Robin (q = 3)&quot;, w, RoundRobin(w, 3));
+var w = MakeWorkload(); PrintReport("FCFS", w, Fcfs(w));
+w = MakeWorkload(); PrintReport("SJF", w, Sjf(w));
+w = MakeWorkload(); PrintReport("Round Robin (q = 3)", w, RoundRobin(w, 3));
 PartB();
 }
 }

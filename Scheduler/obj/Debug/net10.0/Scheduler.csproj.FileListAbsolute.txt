@@ -3,3 +3,13 @@
 /workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.AssemblyInfo.cs
 /workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.csproj.CoreCompileInputs.cache
 /workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.sourcelink.json
+/workspaces/OS_ACTIVITY_1F/Scheduler/bin/Debug/net10.0/Scheduler
+/workspaces/OS_ACTIVITY_1F/Scheduler/bin/Debug/net10.0/Scheduler.deps.json
+/workspaces/OS_ACTIVITY_1F/Scheduler/bin/Debug/net10.0/Scheduler.runtimeconfig.json
+/workspaces/OS_ACTIVITY_1F/Scheduler/bin/Debug/net10.0/Scheduler.dll
+/workspaces/OS_ACTIVITY_1F/Scheduler/bin/Debug/net10.0/Scheduler.pdb
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.dll
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/refint/Scheduler.dll
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.pdb
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/Scheduler.genruntimeconfig.cache
+/workspaces/OS_ACTIVITY_1F/Scheduler/obj/Debug/net10.0/ref/Scheduler.dll
